@@ -2,6 +2,7 @@ class LogsController < ApplicationController
 
   # GET: /logs
   get "/logs" do
+    @logs = Log.all
     erb :"/logs/index.html"
   end
 
@@ -12,6 +13,8 @@ class LogsController < ApplicationController
 
   # POST: /logs
   post "/logs" do
+    @log = Log.new(params)
+    @log.save
     redirect "/logs"
   end
 

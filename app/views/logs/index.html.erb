@@ -1,1 +1,9 @@
-<h1>This is the Model's index page.</h1>
+<h3>Your time logs</h3>
+<% @logs.each do |l| %>
+  Date: <input type="date" value="<%= l.date %>" readonly/>
+  <br>
+  Start Time: <input type="time" value="<%= l.start_time %>" readonly/>
+  <br>
+  End Time: <input type="time" value="<%= l.end_time %>" readonly/>
+<% end %>
+<h3>All time logs by user</h3>
