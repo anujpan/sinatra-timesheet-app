@@ -57,7 +57,12 @@ class UsersController < ApplicationController
   # Show User Profile
   get "/users/:username" do
     @user = User.find_by(username: params[:username])
-    erb :"/users/show.html"
+    
+    if Helper.current_user(session).id == @user.id
+      erb :"/users/show.html"
+    else
+      redirect '/'
+    end
   end
 
   # DELETE User
