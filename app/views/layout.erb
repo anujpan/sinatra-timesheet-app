@@ -18,9 +18,13 @@
       <header class="header">
         <div class="title">TIMESHEET</div>
         <div class="options">
-          <a href="#">Login</a>
-          <a href="#">Sign Up</a>
-          <a href="#">Log Out</a>
+          <% if Helper.logged_in(session) %>
+            <a href="#">Log Out</a>
+          <% else %>
+            <a href="#">Sign Up</a> 
+            |
+            <a href="#">Login</a>
+          <% end %>
         </div>
       </header>
 
