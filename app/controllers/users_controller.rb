@@ -10,9 +10,10 @@ class UsersController < ApplicationController
     erb :"/users/new.html"
   end
 
-  # Post signup
   post "/signup" do
-    redirect "/users"
+    @user = User.new(params)
+    @user.save
+    redirect "/users/#{params[:username]}"
   end
 
   # Login page
@@ -20,9 +21,8 @@ class UsersController < ApplicationController
     erb :"/users/login.html"
   end
 
-  # Post login
   post "/login" do
-    redirect "/users"
+    redirect "/users/:id"
   end
 
   # Sign Out
@@ -31,7 +31,8 @@ class UsersController < ApplicationController
   end
 
   # Show User Profile
-  get "/users/:id" do
+  get "/users/:username" do
+    @user = User.find_by(username: params[:username])
     erb :"/users/show.html"
   end
 
@@ -40,7 +41,6 @@ class UsersController < ApplicationController
     erb :"/users/edit.html"
   end
 
-  # PATCH edit to User Profile
   patch "/users/:id" do
     redirect "/users/:id"
   end
