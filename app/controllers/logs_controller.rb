@@ -35,7 +35,8 @@ class LogsController < ApplicationController
   end
 
   # DELETE: /logs/5/delete
-  delete "/logs/:id/delete" do
+  post "/logs/:id/delete" do
+    Log.find_by(id: params[:id]).destroy
     redirect "/logs"
   end
 end

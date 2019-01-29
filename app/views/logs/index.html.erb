@@ -8,7 +8,9 @@
     <br>
     End Time: <input type="time" value="<%= l.end_time %>" readonly/>
     <br>
-    <a href="/logs/<%= l.id %>/edit">Edit</a> | <a href="#">Delete</a>
+    <form action="/logs/<%= l.id %>/delete" method="POST">
+      <a href="/logs/<%= l.id %>/edit">Edit</a> | <input type="submit" value="delete" />
+    </form>
   </div>
 <% end %>
 <br>
