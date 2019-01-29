@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
 
-    <title>SinatraTimesheetApp/</title>
+    <title>Sinatra Timesheet App/</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -15,18 +15,20 @@
   </head>
   <body>
     <div class="wrapper">
+      <header class="header">
+        <div class="title">TIMESHEET</div>
+        <div class="options">
+          <a href="#">Login</a>
+          <a href="#">Sign Up</a>
+          <a href="#">Log Out</a>
+        </div>
+      </header>
 
-        <%= yield %>
+      <%= yield %>
 
       <footer class="branding">
         <small>&copy; 2019 <strong>SinatraTimesheetApp/</strong></small>
       </footer>
     </div>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <!--[if lt IE 7]>
-      <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
-      <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
-    <![endif]-->
   </body>
 </html>
