@@ -1,2 +1,7 @@
 <h3>Hello <%= @user.first_name %> <%= @user.last_name %> (<%= @user.username %>),</h3>
-Add to the time log <a href="#">here</a> or edit your profile <a href="#">here</a>.
+<div>Add to the time log <a href="#">here</a></div>
+---
+<form action="<%= @user.username %>/delete" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  Delete your profile by clicking <input type="submit" value="DELETE" />
+</form>

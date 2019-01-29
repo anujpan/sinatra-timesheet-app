@@ -53,17 +53,11 @@ class UsersController < ApplicationController
     erb :"/users/show.html"
   end
 
-  # Edit User Profile
-  get "/users/:id/edit" do
-    erb :"/users/edit.html"
-  end
-
-  patch "/users/:id" do
-    redirect "/users/:id"
-  end
-
   # DELETE User
-  delete "/users/:id/delete" do
-    redirect "/users"
-  end
+  post "/users/:username/delete" do
+    @user = User.find_by(username: params[:username])
+    @user.destroy
+    binding.pry
+    redirect "/logout"
+  end  
 end
