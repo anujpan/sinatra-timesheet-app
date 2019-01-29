@@ -1,9 +1,25 @@
-<h3>Your time logs</h3>
+<h3>Your time logs (<a href="/logs/new">new</a>)</h3>
+<br>
 <% @logs.each do |l| %>
-  Date: <input type="date" value="<%= l.date %>" readonly/>
-  <br>
-  Start Time: <input type="time" value="<%= l.start_time %>" readonly/>
-  <br>
-  End Time: <input type="time" value="<%= l.end_time %>" readonly/>
+  <div class="time_block">
+    Date: <input type="date" value="<%= l.date %>" readonly/>
+    <br>
+    Start Time: <input type="time" value="<%= l.start_time %>" readonly/>
+    <br>
+    End Time: <input type="time" value="<%= l.end_time %>" readonly/>
+    <br>
+    <a href="/logs/<%= l.id %>/edit">Edit</a> | <a href="#">Delete</a>
+  </div>
 <% end %>
-<h3>All time logs by user</h3>
+<br>
+<h3>All user time logs</h3>
+<br>
+<% @logs.each do |l| %>
+  <div class="time_block">
+    Date: <input type="date" value="<%= l.date %>" readonly/>
+    <br>
+    Start Time: <input type="time" value="<%= l.start_time %>" readonly/>
+    <br>
+    End Time: <input type="time" value="<%= l.end_time %>" readonly/>
+  </div>
+<% end %>

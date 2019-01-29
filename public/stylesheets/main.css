@@ -94,6 +94,10 @@
     clear: both;
   }
 
+  .time_block {
+    margin-bottom: 20px;
+  }
+
   footer.branding {
     border-top: 2px solid #ccc;
     margin-top: 20px;
