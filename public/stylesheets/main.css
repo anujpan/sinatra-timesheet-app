@@ -52,6 +52,11 @@
     margin-bottom: 18px;
   }
 
+  input {
+    display: block;
+    margin-bottom: 7px;
+  }
+
   .header {
     align-items: center;
     display: flex;
