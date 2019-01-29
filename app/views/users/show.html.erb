@@ -1,5 +1,6 @@
 <h3>Hello <%= @user.first_name %> <%= @user.last_name %> (<%= @user.username %>),</h3>
-<div>Add to the time log <a href="#">here</a></div>
+<div>- Add to the time log <a href="/logs/new">here</a></div>
+<div>- View all time logs <a href="/logs">here</a></div>
 ---
 <form action="<%= @user.username %>/delete" method="POST">
   <input id="hidden" type="hidden" name="_method" value="delete">
