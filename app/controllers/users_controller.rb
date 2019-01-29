@@ -17,7 +17,8 @@ class UsersController < ApplicationController
 
   post "/signup" do
     @user = User.new(params)
-    if @user.save && !User.find_by(username: params[:username])
+    if !User.find_by(username: params[:username])
+      @user.save
       session[:user_id] = @user.id
       redirect "/users/#{params[:username]}"
     else
