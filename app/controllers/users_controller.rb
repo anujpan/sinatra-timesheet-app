@@ -61,7 +61,6 @@ class UsersController < ApplicationController
   post "/users/:username/delete" do
     @user = User.find_by(username: params[:username])
     @user.destroy
-    binding.pry
     redirect "/logout"
   end  
 end
