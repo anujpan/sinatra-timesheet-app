@@ -1,1 +1,9 @@
-<h1>Full user list</h1>
+<h3>Full user list</h3>
+<% @users.each do |u| %>
+  <br>
+  ------------
+  <br>
+  Username: <%= u.username %>
+  <br>
+  Name: <%= u.first_name %> <%= u.last_name %>
+<% end %>

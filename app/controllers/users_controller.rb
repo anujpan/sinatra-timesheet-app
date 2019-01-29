@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   # Full user list
   get "/users" do
+    @users = User.all
+    
     erb :"/users/index.html"
   end
 
