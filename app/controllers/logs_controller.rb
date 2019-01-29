@@ -20,11 +20,12 @@ class LogsController < ApplicationController
 
   # GET: /logs/5
   get "/logs/:id" do
-    erb :"/logs/show.html"
+    redirect "/logs"
   end
 
   # GET: /logs/5/edit
   get "/logs/:id/edit" do
+    @log = Log.find_by(id: params[:id])
     erb :"/logs/edit.html"
   end
 

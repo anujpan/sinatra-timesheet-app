@@ -1,1 +1,8 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h3>Edit time log</h3>
+<form action="/logs/<%= @log.id %>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <label>Date: <input type="date" name="date" value="<%= @log.date %>" ></label>
+  <label>Start Time: <input type="time" name="start_time" value="<%= @log.start_time %>" ></label>
+  <label>End Time: <input type="time" name="end_time" value="<%= @log.end_time %>" ></label>
+  <input type="submit" value="submit" />
+</form>
