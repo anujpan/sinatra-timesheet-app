@@ -11,14 +11,13 @@ class UsersController < ApplicationController
       @user = User.find_by(id: session[:user_id])
       redirect "/users/#{@user.username}"
     else
-      @session = session
-      erb :"/users/new.html"  
+      erb :"/users/new.html"
     end
   end
 
   post "/signup" do
     @user = User.new(params)
-    if @user.save
+    if @user.save && !User.find_by(username: params[:username])
       session[:user_id] = @user.id
       redirect "/users/#{params[:username]}"
     else
@@ -28,7 +27,12 @@ class UsersController < ApplicationController
 
   # Login page
   get "/login" do
-    erb :"/users/login.html"
+    if session[:user_id]
+      @user = User.find_by(id: session[:user_id])
+      redirect "/users/#{@user.username}"
+    else
+      erb :"/users/login.html"
+    end
   end
 
   post "/login" do
