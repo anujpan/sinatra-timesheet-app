@@ -3,12 +3,20 @@ class LogsController < ApplicationController
   # GET: /logs
   get "/logs" do
     @logs = Log.all
-    erb :"/logs/index.html"
+    if Helper.logged_in(session)
+      erb :"/logs/index.html"
+    else
+      redirect '/'
+    end
   end
 
   # GET: /logs/new
   get "/logs/new" do
-    erb :"/logs/new.html"
+    if Helper.logged_in(session)
+      erb :"/logs/new.html"
+    else
+      redirect '/'
+    end
   end
 
   # POST: /logs
@@ -26,7 +34,11 @@ class LogsController < ApplicationController
   # GET: /logs/5/edit
   get "/logs/:id/edit" do
     @log = Log.find_by(id: params[:id])
-    erb :"/logs/edit.html"
+    if Helper.current_user(session).id == @log.user_id
+      erb :"/logs/edit.html"
+    else
+      redirect '/logs'
+    end
   end
 
   # PATCH: /logs/5
