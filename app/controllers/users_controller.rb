@@ -68,6 +68,9 @@ class UsersController < ApplicationController
   # DELETE User
   post "/users/:username/delete" do
     @user = User.find_by(username: params[:username])
+    Log.where(user_id: @user.id).each do |l|
+      l.destroy
+    end
     @user.destroy
     redirect "/logout"
   end  
