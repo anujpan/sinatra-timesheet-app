@@ -44,7 +44,12 @@ class LogsController < ApplicationController
 
   # PATCH: /logs/5
   patch "/logs/:id" do
-    redirect "/logs/:id"
+    log = Log.find_by(id: params[:id])
+    log.date = params[:date]
+    log.start_time = params[:start_time]
+    log.end_time = params[:end_time]
+    log.save
+    redirect "/logs"
   end
 
   # DELETE: /logs/5/delete
