@@ -1,27 +1,25 @@
 <h3>Your time logs (<a href="/logs/new">new</a>)</h3>
 <br>
 <% @logs.each do |l| %>
-  <div class="time_block">
-    Date: <input type="date" value="<%= l.date %>" readonly/>
-    <br>
-    Start Time: <input type="time" value="<%= l.start_time %>" readonly/>
-    <br>
-    End Time: <input type="time" value="<%= l.end_time %>" readonly/>
-    <br>
-    <form action="/logs/<%= l.id %>/delete" method="POST">
-      <a href="/logs/<%= l.id %>/edit">Edit</a> | <input type="submit" value="delete" />
-    </form>
-  </div>
+  <% if Helper.current_user(session).id == l.user_id  %>
+    <div class="time_block">
+      <label>Date: <input type="date" value="<%= l.date %>" readonly/></label>
+      <label>Start Time: <input type="time" value="<%= l.start_time %>" readonly/></label>
+      <label>End Time: <input type="time" value="<%= l.end_time %>" readonly/></label>
+      <form action="/logs/<%= l.id %>/delete" method="POST">
+        <a href="/logs/<%= l.id %>/edit">Edit</a> | <input type="submit" value="delete" />
+      </form>
+    </div>
+  <% end %>
 <% end %>
 <br>
 <h3>All user time logs</h3>
 <br>
 <% @logs.each do |l| %>
   <div class="time_block">
-    Date: <input type="date" value="<%= l.date %>" readonly/>
-    <br>
-    Start Time: <input type="time" value="<%= l.start_time %>" readonly/>
-    <br>
-    End Time: <input type="time" value="<%= l.end_time %>" readonly/>
+    <label>User: <input type="text" readonly value="<%= User.find_by(id: l.user_id).username %>"/></label>
+    <label>Date: <input type="date" value="<%= l.date %>" readonly/></label>
+    <label>Start Time: <input type="time" value="<%= l.start_time %>" readonly/></label>
+    <label>End Time: <input type="time" value="<%= l.end_time %>" readonly/><label>
   </div>
 <% end %>
