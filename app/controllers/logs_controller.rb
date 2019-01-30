@@ -22,6 +22,7 @@ class LogsController < ApplicationController
   # POST: /logs
   post "/logs" do
     @log = Log.new(params)
+    @log.user = Helper.current_user(session)
     @log.save
     redirect "/logs"
   end
