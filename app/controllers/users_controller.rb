@@ -18,10 +18,10 @@ class UsersController < ApplicationController
   end
 
   post "/signup" do
-    @user = User.new(params)
+    user = User.new(params)
     if !User.find_by(username: params[:username])
-      @user.save
-      session[:user_id] = @user.id
+      user.save
+      session[:user_id] = user.id
       redirect "/users/#{params[:username]}"
     else
       redirect "/signup"
@@ -39,10 +39,10 @@ class UsersController < ApplicationController
   end
 
   post "/login" do
-    @user = User.find_by(username: params[:username])
-    if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      redirect "/users/#{@user.username}"
+    user = User.find_by(username: params[:username])
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect "/users/#{user.username}"
     else
       redirect '/login'
     end
@@ -66,12 +66,12 @@ class UsersController < ApplicationController
   end
 
   # DELETE User
-  post "/users/:username/delete" do
-    @user = User.find_by(username: params[:username])
-    Log.where(user_id: @user.id).each do |l|
+  delete "/users/:username/delete" do
+    user = User.find_by(username: params[:username])
+    Log.where(user_id: user.id).each do |l|
       l.destroy
     end
-    @user.destroy
+    user.destroy
     redirect "/logout"
   end  
 end
