@@ -19,7 +19,7 @@
         <div class="title">TIMESHEET</div>
         <div class="options">
           <% if Helper.logged_in(session) %>
-            <a href="/users/<%= Helper.current_user(session).username %>">Profile</a>
+            <a href="/users/<%= Helper.current_user(session).username %>"><%= Helper.current_user(session).username %></a>
             |
             <a href="/logout">Log Out</a>
           <% else %>
