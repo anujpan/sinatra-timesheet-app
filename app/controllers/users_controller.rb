@@ -1,10 +1,14 @@
 class UsersController < ApplicationController
 
-  # Full user list
+  # Full user list // only used to keep track of users from an admin level
   get "/users" do
     @users = User.all
     
-    erb :"/users/index.html"
+    if session[:user_id]
+      erb :"/users/index.html"
+    else
+      redirect :"/"
+    end
   end
 
   # Signup page
