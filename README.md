@@ -12,7 +12,7 @@ The project utilizes an MVC structure which can be found in the main app folder
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/beer_advocate.
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/sinatra-timesheet-app.
 
 
 ## License
